@@ -31,10 +31,10 @@ class Text2(NodeBase):
 ```
 ## How It Works
 
-1. The parser uses the `ast` module to read and parse each Python file without executing the code.
-2. It extracts class attributes such as `label`, `description`, `category`, `execution_type` and a special attribute `params` that defines the node's configurable fields.
-3. Return a JSON string containing the parsed data - that could be read into Mellon.
-4. Print a formatted output to the console with filename headers, class names, and parameter details for demo purposes.
+1. The parser uses the `ast` module to read and parse each Python file without executing the code. 
+2. If the class inherits from NodeBase, it extracts class attributes such as `label`, `description`, `category`, `execution_type` and a special attribute `params` that defines the node's configurable fields.
+3. It return a JSON string containing the parsed data - that could be read into Mellon.
+4. It prints a formatted output to the console with filename headers, class names, and parameter details for demo purposes.
 
 ## Data Format
 

@@ -1,5 +1,7 @@
 # file: custom/data_cleaner.py
-class DataCleaner:
+from parser import NodeBase
+
+class DataCleaner(NodeBase):
     """Clean input data for further processing."""
     label = "DataCleaner"
     description = "Data Cleaning Node"

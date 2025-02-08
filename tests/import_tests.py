@@ -16,8 +16,10 @@ import random
 import math
 import functools
 
+from parser import NodeBase
 
-class ImportTests:
+
+class ImportTests(NodeBase):
     """ImportTests: Test heavy module imports."""
     label = "ImportTests"
     description = "Tests heavy module imports such as diffusers and others."

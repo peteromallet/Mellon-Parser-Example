@@ -1,5 +1,7 @@
 # file: custom/multiple_classes.py
-class Alpha:
+from parser import NodeBase
+
+class Alpha(NodeBase):
     """Alpha class with parameters."""
     label = "Alpha"
     description = "Alpha Node"
@@ -17,7 +19,7 @@ class Alpha:
     def execute(self, param1: str) -> str:
         return param1[::-1]
 
-class Beta:
+class Beta(NodeBase):
     """Beta class without parameters."""
     label = "Beta"
     description = "Beta Node"

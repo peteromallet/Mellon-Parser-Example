@@ -1,5 +1,7 @@
 # file: custom/graph_data_node.py
-class GraphData:
+from parser import NodeBase
+
+class GraphData(NodeBase):
     """Prepare data for graph plotting."""
     label = "GraphData"
     description = "Graph Data Node"

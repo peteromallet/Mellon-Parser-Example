@@ -1,5 +1,7 @@
 # file: custom/arithmetic_calculator.py
-class Calculator:
+from parser import NodeBase
+
+class Calculator(NodeBase):
     """Calculator node for arithmetic operations"""
     label = "Calc"
     description = "Arithmetic calculator"

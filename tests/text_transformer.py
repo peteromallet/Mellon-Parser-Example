@@ -1,5 +1,7 @@
 # file: custom/text_transformer.py
-class TextTransformer:
+from parser import NodeBase
+
+class TextTransformer(NodeBase):
     """Transform text in various ways"""
     label = "TextTransformer"
     description = "Transforms text with different operations"

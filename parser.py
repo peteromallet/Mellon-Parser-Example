@@ -6,6 +6,20 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
+class NodeBase:
+    """Base class for all nodes in the system."""
+    label: str = "Base"
+    description: str = "Base node class"
+    category: str = "base"
+    execution_type: str = "none"
+    
+    # Default empty params dictionary
+    params: Dict[str, Dict[str, Any]] = {}
+    
+    def execute(self, *args, **kwargs) -> Any:
+        """Base execute method that should be overridden by child classes."""
+        raise NotImplementedError("Execute method must be implemented by child class")
+
 class PythonClassParser:
     def __init__(self):
         self.current_class = None
@@ -287,6 +301,10 @@ class PythonFolderParser:
             tree = ast.parse(content)
         except SyntaxError as syn_ex:
             error_msg = f"Syntax error in file {file_path}: {syn_ex}"
+            results['errors'].append({
+                'file': str(file_path),
+                'error': error_msg
+            })
             logging.error(error_msg)
             # Return an empty result to skip invalid files, with a consistent structure
             return {'classes': [], 'errors': []}
@@ -303,6 +321,8 @@ class PythonFolderParser:
             if isinstance(node, ast.ClassDef):
                 try:
                     class_info = self.parser.extract_class_info(node)
+                    if not any("NodeBase" in base for base in class_info.get('bases', [])):
+                        continue
                     class_info['file'] = str(file_path)
                     results['classes'].append(class_info)
                 except Exception as ex:
